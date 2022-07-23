@@ -1,0 +1,21 @@
+name: Auto Issue Closer
+
+on:
+  push:
+    branches:
+      - "develop" # i want issues to be closed only when pushed directly to these branches
+      - "staging"
+  pull_request:
+    branches:
+      - "develop" # i want issues to be closed when pr are merged to these branches
+      - "staging"
+
+jobs:
+  issue-closer:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: nischalstha9/issue-closer@master
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }} #github secret token
+        repo: 'naxa-developers/naxa-backend-boilerplate' #repo name
+        base_branch: 'develop' #repo base_branch

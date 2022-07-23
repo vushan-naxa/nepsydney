@@ -1,0 +1,56 @@
+version: '3.4'
+
+services:
+  db:
+    image: mdillon/postgis:11-alpine
+    container_name: psql-naxa
+    env_file: pg_env.txt
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+
+
+  pgadmin:
+    image: dpage/pgadmin4
+    env_file: pg_env.txt
+    ports:
+      - "5051:80"
+    restart: always
+    depends_on:
+      - db
+
+  geoserver:
+    image: kartoza/geoserver:2.19.0
+    env_file: geoserver_env.txt
+    volumes:
+      - geoserver-data:/opt/geoserver/data_dir
+    ports:
+      - "8600:8080"
+    restart: on-failure
+    depends_on:
+      - db
+
+  redis:
+    image: redis:alpine
+    restart: always
+    command: redis-server --appendonly yes
+    volumes:
+      - ../redis_data:/var/lib/redis
+
+
+  celery:
+    env_file: .env
+    restart: always
+    entrypoint: celery -A project worker -l info
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/code
+    depends_on:
+      - redis
+
+volumes:
+  postgres-data:
+    name: postgres-data
+  geoserver-data:
+    name: geoserver-data

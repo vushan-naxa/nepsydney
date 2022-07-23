@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Naxa</title>
+</head>
+<body>
+
+<h1 align="center">Django Boiler Plate </h1>
+<h1 align="center">Congratulation Setup Successfully Completed!!!! </h1>
+<p align="center">Base project structure with some included package and function. To be used for all projects In Naxa
+   for Backend</p>
+<h3>Package Included </h3>
+<div>
+    <li><b>(Django==3.1)</b>Django</li>
+    <li><b>(celery==5.0.1)</b>Celery</li>
+    <li><b>(redis==3.5.3)</b>Redis</li>
+    <li><b>(drf-yasg==1.20.0)</b>Swagger for Api Documentation</li>
+    <li><b>(django-debug-toolbar==3.1.1)</b>Debug ToolBar</li>
+    <li><b>(coreschema==0.0.4)</b> Cors-header for cors control</li>
+    <li><b>(django-filter==2.4.0)</b>Django Filters</li>
+    <li><b>(gunicorn==20.0.4)</b>Gunicorn for production server</li>
+</div>
+
+<h3>Api Documentation</h3>
+<div>
+    <li>Swagger used for Api Documentation</li>
+    <li>All api's Listed in Api Documentation Page</li>
+    <li>Check <b>/project/urls.py</b> file for settings used</li>
+    <li>Package used <b>drf-yasg==1.20.0</b></li>
+    <li>Check Api Documentation Page <a href="/api/docs/">Api</a></li>
+</div>
+
+<h3>Login and Logout </h3>
+<div>
+    <li>Used django built-in auth view</li>
+    <li>Check <b>/project/urls.py/</b> for the used views</li>
+    <li>Sample redirect Url in Local settings files <b>/project/local_settings_sample.py</b></li>
+    <li>Check <b>templates/registration/login.html</b> for login html file</li>
+    <li>Check Login url <a href="/login/">Login</a></li>
+</div>
+
+<h3>API Authentication</h3>
+<div>
+    <li>In built DRF Token Authentication Used</li>
+    <li>Check <b>/project/urls.py/</b> for the used views</li>
+    <li>Authentication Class Defined in <b>/project/settings.py</b></li>
+    <li>Check "api-token" in <a href="/api/docs/">API</a></li>
+
+</div>
+
+
+
+<h3>External sevices urls if used</h3>
+<div>
+    <li>Geoserver used for spatial data managemnt <a href=http://localhost:8600/geoserver>Geoserver</a></li>
+    <li>Postgres gui admin dashboard <a href=http://localhost:5051>pgadmin</a></li>
+
+
+</div>
+
+
+</body>
+</html>
